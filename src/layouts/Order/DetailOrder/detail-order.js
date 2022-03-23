@@ -6,7 +6,7 @@ import { faBell, faBox, faCircleCheck, faClock, faUser } from '@fortawesome/free
 import './styles.scss';
 
 const DetailOrder = (props) => {
-    const [order, setOrder] = useState();
+    const [order, setOrder] = useState(null);
     const { orderId } = useParams();
 
     useEffect(() => {
@@ -14,14 +14,18 @@ const DetailOrder = (props) => {
             console.log(data);
 
             setOrder(data);
+        }).catch(() => {
+            setOrder(false);
         });
     }, []);
 
     const getStatusStyle = (status = "") => {
+        console.log(status, 'status');
+        
         if (status == "pendiente")
             return "pending";
-        if (status == "in-progress")
-            return "pending";
+        if (status == "encurso")
+            return "in-progress";
         if (status == "entregado")
             return "delivered";
     }
@@ -36,11 +40,13 @@ const DetailOrder = (props) => {
             return "en la noche";
     }
 
-    if (!order)
+    if (order == undefined)
         return <>...</>;
+    else if (order == false)
+        return <h2>No se encontró la entrega</h2>;
     else
         return <div className="detail-order">
-            <div className={"state-order in-progress " + getStatusStyle(order.estado)}>
+            <div className={"state-order " + getStatusStyle(order.estado)}>
                 <span>{order.estado}</span>
                 <span>N° Transporte {order.transporte.codigo}</span>
             </div>
