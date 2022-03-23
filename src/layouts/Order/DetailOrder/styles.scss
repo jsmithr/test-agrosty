@@ -1,0 +1,150 @@
+@import "../../../styles/media-query.scss";
+
+.detail-order {
+    min-height: 80vh;
+
+    .state-order {
+        height: 50px;
+        color: #fff;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 5%;
+
+        &.pending {
+            background-color: #2e2d2d;
+        }
+        &.in-progress {
+            background-color: #0fc728;
+        }
+        &.delivered {
+            background-color: #427cfb;
+        }
+    }
+
+    .body-order {
+        margin: auto;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+
+        .card-info {
+            width: 25%;
+
+            div {
+                margin-bottom: 5px;
+                padding: 5px 10px;
+            }
+
+            &-body {
+                margin-top: 20px;
+                div {
+                    background-color: #fff;
+                    min-height: 50px;
+                    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+
+                    span {
+                        color: #8c8c8c;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .card-articles {
+            width: 70%;
+            .table-article {
+                max-height: 50vh;
+                overflow-y: auto;
+                padding-right: 5px;
+                margin-top: 20px;
+                box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+
+                table {
+                    width: 100%;
+                }
+                tr:nth-child(odd) {
+                    background: #f9f9f9;
+                }
+                tr:nth-child(even) {
+                    background: #fff;
+                }
+
+                th {
+                    background-color: #fff;
+                    padding: 5px 0;
+                    font-size: 14px;
+                }
+
+                td {
+                    padding: 5px;
+                }
+            }
+        }
+
+        @include until($small) {
+            display: block;
+            .card-info,
+            .card-articles {
+                width: 100%;
+            }
+        }
+    }
+
+    .card-footer {
+        width: 90%;
+        margin: auto;
+
+        .history-order {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            @include until($small) {
+                display: block;
+            }
+        }
+
+        .order-actions {
+            display: flex;
+
+            @include until($small) {
+                display: block;
+                margin-top: 50px;
+            }
+
+            & > div {
+                min-width: 100px;
+                max-width: 300px;
+                padding: 0 10px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                
+                @include until($small) {
+                    width: 100%;
+                    justify-content: none;
+                    margin-bottom: 50px;
+                }
+
+                .icon {
+                    padding-right: 10px;
+                }
+
+                span {
+                    color: #8c8c8c;
+                }
+            }
+        }
+
+        .btn-message {
+            background-color: #029978;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+        }
+    }
+}

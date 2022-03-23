@@ -1,0 +1,84 @@
+@import "./styles/media-query.scss";
+
+.app {
+    background-color: #f7f7f7;
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+
+	._header {
+		background: rgb(97, 231, 253);
+		background: linear-gradient(345deg, #008163 0%, #006981 37%, #165470 67%, #004e7c 79%);
+		height: 80px;
+		display: flex;
+		justify-content: end;
+		align-items: center;
+		color: #fff;
+		font-weight: 600;
+		overflow: hidden;
+
+		div {
+			display: flex;
+			justify-content: end;
+			align-items: center;
+			padding: 30px 20px;
+			font-size: 14px;
+
+			&.active {
+				background-color: #009688;
+			}
+
+			&.profile {
+				color: #1f1e1e;
+				font-weight: 800;
+				span {
+					background-color: #fff;
+					border-radius: 50%;
+					padding: 10px 15px;
+				}
+			}
+		}
+
+		@include until($small){
+			height: 50px;
+			justify-content: space-evenly;
+
+			div{
+				padding: 30px 5px;
+				font-size: 12px;
+			}
+		}
+	}
+	.icon {
+		padding: 0 5px;
+	}
+	.bg-icon {
+		background-color: #fff;
+		color: #4e4e4e;
+		padding: 7px;
+		border-radius: 50%;
+		margin-right: 5px;
+	}
+}
+
+footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 80px;
+	color: #8c8c8c;
+	@include until($small){
+		padding: 20px;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+

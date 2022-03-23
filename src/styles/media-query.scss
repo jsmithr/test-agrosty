@@ -1,0 +1,10 @@
+$small: 480px; /* Mobile devices*/
+$s-medium: 768px; /* Tablet devices*/
+$medium: 1024px; /* Small screens, laptops */
+$large: 1200px; /* Desktops, large screens */
+
+@mixin until($size) {
+    @media (max-width: $size) {
+        @content;
+    }
+}

@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import axios from 'axios';
+
+// const store = createStore(null);
+
+// For GET requests
+axios.interceptors.request.use(
+  (req) => {
+    req.baseURL = 'https://testing-1.api.encamino.ar';
+    req.headers['Authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjM5LCJpYXQiOjE2NDU4MTgyMTgsInJvbCI6ImRpc3RyaWJ1aWRvciJ9.zcxMSyoDm3HdJuJ0oLn387FDvzFmQ209dy7q5blzmI4';
+    return req;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
 
 ReactDOM.render(
+  // <Provider store={store}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+  // </Provider>
+  ,
   document.getElementById('root')
 );
 
